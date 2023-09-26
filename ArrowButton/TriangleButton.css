@@ -1,0 +1,22 @@
+.triangle-button {
+  position: relative;
+  background-color: #007bff; // Change to your desired button color
+  color: #fff; // Change to your desired text color
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 0; // Remove button border-radius
+
+  /* Create the triangle shape */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 0 0 100px 100px;
+    border-style: solid;
+    border-color: transparent transparent transparent #007bff; // Match button background color
+  }
+}
+
