@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface ArrayMoverProps {
   initialArray1: string[];
   initialArray2: string[];
 }
 
-const ArrayMover: React.FC<ArrayMoverProps> = ({ initialArray1, initialArray2 }) => {
+const ArrayMover: React.FC<ArrayMoverProps> = ({
+  initialArray1,
+  initialArray2,
+}) => {
   const [array1, setArray1] = useState<string[]>(initialArray1);
   const [array2, setArray2] = useState<string[]>(initialArray2);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -35,42 +38,60 @@ const ArrayMover: React.FC<ArrayMoverProps> = ({ initialArray1, initialArray2 })
     <div className="container">
       <div className="row">
         <div className="col">
-          <h2>Array 1</h2>
-          <ul className="list-group">
-            {array1.map((item) => (
-              <li
-                key={item}
-                className={`list-group-item ${selectedItem === item ? 'active' : ''}`}
-                onClick={() => handleItemClick(item)}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Database</th>
+                <th>Tables</th>
+              </tr>
+            </thead>
+            <tbody>
+              {array1.map((item) => (
+                <tr
+                  key={item}
+                  className={selectedItem === item ? "table-primary" : ""}
+                  onClick={() => handleItemClick(item)}
+                >
+                  <td>{item}</td>
+                  <td>test2</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+        <div className="col">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Database</th>
+                <th>Tables</th>
+              </tr>
+            </thead>
+            <tbody>
+              {array2.map((item) => (
+                <tr
+                  key={item}
+                  className={selectedItem === item ? "table-primary" : ""}
+                  onClick={() => handleItemClick(item)}
+                >
+                  <td>{item}</td>
+                  <td>test</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="row">
         <div className="col">
           <div className="d-flex flex-column align-items-center">
-            <button className="btn btn-primary mt-2" onClick={handleMoveToLeft}>
-              &lt; Move Left
+            <button className="btn btn-light" onClick={handleMoveToLeft}>
+              Move Left
             </button>
-            <button className="btn btn-primary mt-2" onClick={handleMoveToRight}>
-              Move Right &gt;
+            <button className="btn btn-light" onClick={handleMoveToRight}>
+              Move Right
             </button>
           </div>
-        </div>
-        <div className="col">
-          <h2>Array 2</h2>
-          <ul className="list-group">
-            {array2.map((item) => (
-              <li
-                key={item}
-                className={`list-group-item ${selectedItem === item ? 'active' : ''}`}
-                onClick={() => handleItemClick(item)}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
